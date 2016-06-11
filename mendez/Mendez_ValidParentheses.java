@@ -11,7 +11,7 @@ import java.util.Stack;
  */
 public class Mendez_ValidParentheses {
 
-    public static char getClosingTag(char c) {
+    public static char getClosingParenthesis(char c) {
         switch (c) {
             case '{':
                 return '}';
@@ -20,27 +20,27 @@ public class Mendez_ValidParentheses {
             case '(':
                 return ')';
             default:
-                return 'c';
+                return 'c'; // c - means the paranthesis is not an opening paranthesis.
         }
     }
 
     public static void main(String[] args) {
-        String testCase = "[{{}}]";
-        if (getClosingTag(testCase.charAt(0)) == 'c') {
+        String testCase = "[{{}}]{[[]]}{{}}";
+        if (getClosingParenthesis(testCase.charAt(0)) == 'c') { 
             System.out.println("false");
             System.exit(0);
         }
         Stack<Character> stack = new Stack<>();
         char[] testArary = testCase.toCharArray();
-        for (char c : testArary) {
-            if (getClosingTag(c) != 'c') {
-                stack.push(c);
+        for (char parenthesis : testArary) {
+            if (getClosingParenthesis(parenthesis) != 'c') {
+                stack.push(parenthesis);
             } else {
                 if (stack.size() == 0) {
                     System.out.println("false");
                     System.exit(0);
                 }
-                if (c != getClosingTag(stack.pop())) {
+                if (parenthesis != getClosingParenthesis(stack.pop())) {
                     System.out.println("false");
                     System.exit(0);
                 }
@@ -53,3 +53,4 @@ public class Mendez_ValidParentheses {
         }
     }
 }
+

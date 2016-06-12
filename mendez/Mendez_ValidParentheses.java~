@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package XtremeX;
 import java.util.Stack;
 
 /**
@@ -25,7 +24,11 @@ public class Mendez_ValidParentheses {
     }
 
     public static void main(String[] args) {
-        String testCase = "{}}";
+        String testCase = "[{{}}]{[[]]}{{}}";
+        if (getClosingParenthesis(testCase.charAt(0)) == 'c') { 
+            System.out.println("false");
+            System.exit(0);
+        }
         Stack<Character> stack = new Stack<>();
         char[] testArary = testCase.toCharArray();
         for (char parenthesis : testArary) {

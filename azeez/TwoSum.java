@@ -5,6 +5,9 @@
  */
 package xtremehackerprep;
 
+import java.util.HashMap;
+import java.util.Scanner;
+
 /**
  *
  * @author azeez
@@ -13,15 +16,17 @@ package xtremehackerprep;
 public class TwoSum {
     public int[] twoSum(int[] nums, int target) {
         int[] result = new int[2];
-        for(int i=0;i<nums.length;++i){
-            for(int j=i+1;j<nums.length;++j){
-                if(nums[i] + nums[j] == target){
-                    result[0] = i;
-                    result[1] = j;
-                    break;
-                }
-            }
-        }
+       HashMap<Integer, Integer> hashmap= new HashMap<>();
+       for(int i=0;i<nums.length;++i){
+           int complement = target - nums[i] ;
+           if(hashmap.containsKey(complement) && hashmap.get(complement) != i){
+               result[0] = hashmap.get(complement);
+               result[1]= i;
+           }else{
+               hashmap.put(nums[i], i);
+           }
+       }
         return result;
-    } 
+    }
 }
+

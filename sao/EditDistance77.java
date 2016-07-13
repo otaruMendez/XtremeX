@@ -59,22 +59,4 @@ public class EditDistance77 {
     }
     
     
-    static class Util{
-        
-        private Util(){}
-        
-        public static int replaceCost(String word1, String word2, int index1, int index2){
-            return (word1.charAt(index1) == word2.charAt(index2)) ? 0 : 1;
-        }
-        
-        public static int min(int... numbers){
-            int result = Integer.MAX_VALUE;
-            for (int each : numbers){
-                result = Math.min(each, result);
-            }
-            return result;
-        }
-        
-    }
-    
 }
